@@ -2,7 +2,8 @@ function computerPlay() {
   //randomly return rock paper scissors
   const gestures = ["rock", "paper", "scissors"];
   var randomGestures = gestures[Math.floor(Math.random() * gestures.length)];
-  //console.log(randomGestures);
+  console.log(randomGestures);
+  return randomGestures;
 }
 
 /*function playerSelection(){
@@ -39,6 +40,23 @@ function playRound(playerSelection, computerSelection) {
     return console.log("You Win! Paper loses to Scissors");
 }
 
-const playerSelection = "rock";
+/*const playerSelection = "rock";
 const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+playRound(playerSelection, computerSelection);*/
+function playerPlay() {
+  return (result = window.prompt(
+    "Please enter either: rock, paper, or scissors"
+  ));
+}
+
+const rounds = 5;
+
+function game() {
+  for (let i = 0; i < rounds; i++) {
+    // your code here!
+    //const playerSelection = "rock";
+    const playerSelection = playerPlay();
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+  }
+}
