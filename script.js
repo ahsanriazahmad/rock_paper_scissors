@@ -53,7 +53,7 @@ const rounds = 5;
 
 function game() {
   for (let i = 0; i < rounds; i++) {
-    // your code here!
+    // runs the 5 rounds of the r,p,s
     //const playerSelection = "rock";
     const playerSelection = playerPlay();
     const computerSelection = computerPlay();

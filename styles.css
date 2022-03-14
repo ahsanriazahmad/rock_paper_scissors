@@ -1,0 +1,31 @@
+/* primary header */
+.logo {
+  margin: 2rem;
+}
+
+.primary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.primary-navigation {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 2rem;
+  text-decoration: none;
+}
+
+@media (max-width: 35em) {
+  .primary-navigation {
+    position: fixed;
+    inset: 0 0 0 30%;
+    gap: 2rem;
+    flex-direction: column;
+    padding: min(30vh, 10rem) 2em;
+
+    background: hsl(0, 0%, 0% / 0.1);
+  }
+}
