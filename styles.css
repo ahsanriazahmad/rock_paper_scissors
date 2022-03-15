@@ -29,3 +29,9 @@
     background: hsl(0, 0%, 0% / 0.1);
   }
 }
+
+.selectMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
