@@ -18,6 +18,7 @@ function playRound(playerSelection, computerSelection) {
   // return a string that declares the winner of the round
   /*if (playerSelection || computerSelection === null)
     return console.log("No Game");*/
+
   if (playerSelection == "rock" && computerSelection == "rock")
     return console.log("Tie");
   if (playerSelection == "rock" && computerSelection == "paper")
@@ -44,9 +45,17 @@ function playRound(playerSelection, computerSelection) {
 const computerSelection = computerPlay();
 playRound(playerSelection, computerSelection);*/
 function playerPlay() {
-  return (result = window.prompt(
-    "Please enter either: rock, paper, or scissors"
-  ));
+ 
+  const buttons = document.querySelectorAll('button');
+
+  // we use the .forEach method to iterate through each button
+  buttons.forEach((button) => {
+  
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+      playRound(button.id)
+    });
+}
 }
 
 const rounds = 5;
