@@ -44,28 +44,43 @@ function playRound(playerSelection, computerSelection) {
 /*const playerSelection = "rock";
 const computerSelection = computerPlay();
 playRound(playerSelection, computerSelection);*/
-function playerPlay() {
- 
-  const buttons = document.querySelectorAll('button');
-
-  // we use the .forEach method to iterate through each button
-  buttons.forEach((button) => {
-  
-    // and for each one we add a 'click' listener
-    button.addEventListener('click', () => {
-      playRound(button.id)
-    });
-}
-}
+//Get user input from Window Prompt
+// function playerPlay() {
+//   return (result = window.prompt(
+//     "Please enter either: rock, paper, or scissors"
+//   ));
+// }
 
 const rounds = 5;
 
-function game() {
-  for (let i = 0; i < rounds; i++) {
-    // runs the 5 rounds of the r,p,s
-    //const playerSelection = "rock";
-    const playerSelection = playerPlay();
-    const computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-  }
-}
+// function game() {
+//   for (let i = 0; i < rounds; i++) {
+//     // runs the 5 rounds of the r,p,s
+//     //const playerSelection = "rock";
+//     const playerSelection = playerPlay();
+//     const computerSelection = computerPlay();
+//     playRound(playerSelection, computerSelection);
+//   }
+// }
+// function game() {
+//   // runs the r,p,s
+//   //const playerSelection = "rock";
+//   const playerSelection = playerPlay();
+//   const computerSelection = computerPlay();
+//   playRound(playerSelection, computerSelection);
+// }
+////////////////////////////// Above is gather input from Prompt//////////////////////////////////
+
+////////////////////////////// Below is gather input After selecting a button//////////////////////////////////
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    //alert(button.id);
+    playerSelection = button.id;
+    //console.log(playerSelection);
+    playRound(playerSelection, computerPlay());
+  });
+});
