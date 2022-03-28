@@ -2,7 +2,7 @@ function computerPlay() {
   //randomly return rock paper scissors
   const gestures = ["rock", "paper", "scissors"];
   var randomGestures = gestures[Math.floor(Math.random() * gestures.length)];
-  console.log(randomGestures);
+  //console.log(randomGestures);
   return randomGestures;
 }
 
@@ -13,34 +13,90 @@ function computerPlay() {
 function computerSelection(){
     
 }*/
+//incerment count for player
+function playerScore() {
+  let playerCount = document.getElementById("playerCount");
+  return playerCount.textContent++;
+}
+
+function computerScore() {
+  let computerCount = document.getElementById("computerCount");
+  return computerCount.textContent++;
+}
+
+function tieScore() {
+  let tieCount = document.getElementById("tieCount");
+  return tieCount.textContent++;
+}
 
 function playRound(playerSelection, computerSelection) {
   // return a string that declares the winner of the round
   /*if (playerSelection || computerSelection === null)
     return console.log("No Game");*/
 
-  if (playerSelection == "rock" && computerSelection == "rock")
-    return console.log("Tie");
-  if (playerSelection == "rock" && computerSelection == "paper")
-    return console.log("You Lose! Paper beats Rock");
-  if (playerSelection == "rock" && computerSelection == "scissors")
-    return console.log("You Win! Scissors loses to Rock");
+  if (playerSelection == "rock" && computerSelection == "rock") {
+    tieScore();
+    console.log("Tie");
+    return;
+  }
 
-  if (playerSelection == "paper" && computerSelection == "paper")
-    return console.log("Tie");
-  if (playerSelection == "paper" && computerSelection == "scissors")
-    return console.log("You Lose! Scissors beats Paper");
-  if (playerSelection == "paper" && computerSelection == "rock")
-    return console.log("You Win! Rock loses to Paper");
+  if (playerSelection == "rock" && computerSelection == "paper") {
+    computerScore();
+    console.log("You Lose! Paper beats Rock");
+    return;
+  }
 
-  if (playerSelection == "scissors" && computerSelection == "scissors")
-    return console.log("Tie");
-  if (playerSelection == "rock" && computerSelection == "scissors")
-    return console.log("You Lose! Rock beats Scissors");
-  if (playerSelection == "paper" && computerSelection == "scissors")
-    return console.log("You Win! Paper loses to Scissors");
+  if (playerSelection == "rock" && computerSelection == "scissors") {
+    playerScore();
+    console.log("You Win! Scissors loses to Rock");
+    return;
+  }
+
+  if (playerSelection == "paper" && computerSelection == "paper") {
+    tieScore();
+    console.log("Tie");
+    return;
+  }
+
+  if (playerSelection == "paper" && computerSelection == "scissors") {
+    computerScore();
+    console.log("You Lose! Scissors beats Paper");
+    return;
+  }
+
+  if (playerSelection == "paper" && computerSelection == "rock") {
+    playerScore();
+    console.log("You Win! Rock loses to Paper");
+    return;
+  }
+
+  if (playerSelection == "scissors" && computerSelection == "scissors") {
+    tieScore();
+    console.log("Tie");
+    return;
+  }
+
+  if (playerSelection == "rock" && computerSelection == "scissors") {
+    computerScore();
+    console.log("You Lose! Rock beats Scissors");
+    return;
+  }
+
+  if (playerSelection == "paper" && computerSelection == "scissors") {
+    playerScore();
+    console.log("You Win! Paper loses to Scissors");
+    return;
+  }
 }
+const rounds = 5;
+let count = 1;
 
+function disableButtons() {
+  buttons.forEach((elem) => {
+    elem.disabled = true;
+  });
+}
+////////////////////////////// Gather input from Prompt//////////////////////////////////
 /*const playerSelection = "rock";
 const computerSelection = computerPlay();
 playRound(playerSelection, computerSelection);*/
@@ -50,8 +106,6 @@ playRound(playerSelection, computerSelection);*/
 //     "Please enter either: rock, paper, or scissors"
 //   ));
 // }
-
-const rounds = 5;
 
 // function game() {
 //   for (let i = 0; i < rounds; i++) {
@@ -72,15 +126,40 @@ const rounds = 5;
 ////////////////////////////// Above is gather input from Prompt//////////////////////////////////
 
 ////////////////////////////// Below is gather input After selecting a button//////////////////////////////////
-const buttons = document.querySelectorAll("button");
+// const buttons = document.querySelectorAll("button");
 
+// function playerPlay() {
+//   // we use the .forEach method to iterate through each button
+//   buttons.forEach((button) => {
+//     // and for each one we add a 'click' listener
+//     button.addEventListener("click", () => {
+//       //console.log(button.id);
+//       let playerSelection = button.id;
+//       //console.log(playerSelection);
+//       return playerSelection;
+//     });
+//   });
+// }
+
+// function game() {
+//   // runs the r,p,s
+//   let playerSelection = playerPlay();
+//   let computerSelection = computerPlay();
+//   playRound(playerSelection, computerSelection);
+// }
+
+// playerPlay();
+// game();
+const buttons = document.querySelectorAll("button");
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
-    //alert(button.id);
-    playerSelection = button.id;
-    //console.log(playerSelection);
-    playRound(playerSelection, computerPlay());
+    //console.log(button.id);
+    let playerSelection = button.id;
+    let computerSelection = computerPlay();
+    console.log("Player" + " " + playerSelection);
+    console.log("CPU" + " " + computerSelection);
+    playRound(playerSelection, computerSelection);
   });
 });
