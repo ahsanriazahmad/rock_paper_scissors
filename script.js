@@ -41,7 +41,7 @@ function incermentCount() {
 function isEndGame(player, computer) {
   let result = document.getElementById("results-container");
   if (player == 5) {
-    result.textContent = "Player Won!";
+    result.textContent = "Player Won! ";
     disableButtons();
   } else if (computer == 5) {
     result.textContent = "Player Lost!";
@@ -59,7 +59,7 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection == "rock" && computerSelection == "rock") {
     tieScore();
-    result.textContent = "Tie";
+    result.textContent = "Tie Both Chose Fireball";
     return;
   }
 
@@ -67,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
     computerScore();
     incermentRound();
     computer++;
-    result.textContent = "You Lose! Paper beats Rock";
+    result.textContent = "You Lose! Shield beats Fireball";
     return;
   }
 
@@ -75,13 +75,13 @@ function playRound(playerSelection, computerSelection) {
     playerScore();
     incermentRound();
     player++;
-    result.textContent = "You Win! Scissors loses to Rock";
+    result.textContent = "You Win! Sword loses to Fireball";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "paper") {
     tieScore();
-    result.textContent = "Tie";
+    result.textContent = "Tie Both Chose Shield";
     return;
   }
 
@@ -89,7 +89,7 @@ function playRound(playerSelection, computerSelection) {
     computerScore();
     incermentRound();
     computer++;
-    result.textContent = "You Lose! Scissors beats Paper";
+    result.textContent = "You Lose! Sword beats Shield";
     return;
   }
 
@@ -97,29 +97,29 @@ function playRound(playerSelection, computerSelection) {
     playerScore();
     incermentRound();
     player++;
-    result.textContent = "You Win! Rock loses to Paper";
+    result.textContent = "You Win! Fireball loses to Shield";
     return;
   }
 
   if (playerSelection == "scissors" && computerSelection == "scissors") {
     tieScore();
-    result.textContent = "Tie";
+    result.textContent = "Tie Both Chose Sword";
     return;
   }
 
-  if (playerSelection == "rock" && computerSelection == "scissors") {
+  if (playerSelection == "scissors" && computerSelection == "rock") {
     computerScore();
     incermentRound();
     computer++;
-    result.textContent = "You Lose! Rock beats Scissors";
+    result.textContent = "You Lose! Fireball beats Sword";
     return;
   }
 
-  if (playerSelection == "paper" && computerSelection == "scissors") {
+  if (playerSelection == "scissors" && computerSelection == "paper") {
     playerScore();
     incermentRound();
     player++;
-    result.textContent = "You Win! Paper loses to Scissors";
+    result.textContent = "You Win! Shield loses to Sword";
     return;
   }
 }
