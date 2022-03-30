@@ -29,8 +29,26 @@ function tieScore() {
   return tieCount.textContent++;
 }
 
-function resultDisplay() {
-  let result = document.getElementById("result-container");
+function incermentRound() {
+  let round = document.getElementById("roundCount");
+  return round.textContent++;
+}
+
+function incermentCount() {
+  count++;
+}
+
+function isEndGame(player, computer) {
+  let result = document.getElementById("results-container");
+  if (player == 5) {
+    result.textContent = "Player Won!";
+    disableButtons();
+  } else if (computer == 5) {
+    result.textContent = "Player Lost!";
+    disableButtons();
+  } else {
+    return;
+  }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -47,12 +65,16 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection == "rock" && computerSelection == "paper") {
     computerScore();
+    incermentRound();
+    computer++;
     result.textContent = "You Lose! Paper beats Rock";
     return;
   }
 
   if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore();
+    incermentRound();
+    player++;
     result.textContent = "You Win! Scissors loses to Rock";
     return;
   }
@@ -65,12 +87,16 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection == "paper" && computerSelection == "scissors") {
     computerScore();
+    incermentRound();
+    computer++;
     result.textContent = "You Lose! Scissors beats Paper";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "rock") {
     playerScore();
+    incermentRound();
+    player++;
     result.textContent = "You Win! Rock loses to Paper";
     return;
   }
@@ -83,18 +109,20 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection == "rock" && computerSelection == "scissors") {
     computerScore();
+    incermentRound();
+    computer++;
     result.textContent = "You Lose! Rock beats Scissors";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "scissors") {
     playerScore();
+    incermentRound();
+    player++;
     result.textContent = "You Win! Paper loses to Scissors";
     return;
   }
 }
-const rounds = 5;
-let count = 1;
 
 function disableButtons() {
   buttons.forEach((elem) => {
@@ -155,6 +183,10 @@ playRound(playerSelection, computerSelection);*/
 
 // playerPlay();
 // game();
+const rounds = 5;
+let player = 0;
+let computer = 0;
+
 const buttons = document.querySelectorAll("button");
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
@@ -163,8 +195,9 @@ buttons.forEach((button) => {
     //console.log(button.id);
     let playerSelection = button.id;
     let computerSelection = computerPlay();
-    console.log("Player" + " " + playerSelection);
-    console.log("CPU" + " " + computerSelection);
+    console.log("Player" + " " + playerSelection + " " + player);
+    console.log("CPU" + " " + computerSelection + " " + computer);
     playRound(playerSelection, computerSelection);
+    isEndGame(player, computer);
   });
 });
