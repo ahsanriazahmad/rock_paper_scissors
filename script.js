@@ -29,62 +29,67 @@ function tieScore() {
   return tieCount.textContent++;
 }
 
+function resultDisplay() {
+  let result = document.getElementById("result-container");
+}
+
 function playRound(playerSelection, computerSelection) {
+  let result = document.getElementById("results-container");
   // return a string that declares the winner of the round
   /*if (playerSelection || computerSelection === null)
     return console.log("No Game");*/
 
   if (playerSelection == "rock" && computerSelection == "rock") {
     tieScore();
-    console.log("Tie");
+    result.textContent = "Tie";
     return;
   }
 
   if (playerSelection == "rock" && computerSelection == "paper") {
     computerScore();
-    console.log("You Lose! Paper beats Rock");
+    result.textContent = "You Lose! Paper beats Rock";
     return;
   }
 
   if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore();
-    console.log("You Win! Scissors loses to Rock");
+    result.textContent = "You Win! Scissors loses to Rock";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "paper") {
     tieScore();
-    console.log("Tie");
+    result.textContent = "Tie";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "scissors") {
     computerScore();
-    console.log("You Lose! Scissors beats Paper");
+    result.textContent = "You Lose! Scissors beats Paper";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "rock") {
     playerScore();
-    console.log("You Win! Rock loses to Paper");
+    result.textContent = "You Win! Rock loses to Paper";
     return;
   }
 
   if (playerSelection == "scissors" && computerSelection == "scissors") {
     tieScore();
-    console.log("Tie");
+    result.textContent = "Tie";
     return;
   }
 
   if (playerSelection == "rock" && computerSelection == "scissors") {
     computerScore();
-    console.log("You Lose! Rock beats Scissors");
+    result.textContent = "You Lose! Rock beats Scissors";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "scissors") {
     playerScore();
-    console.log("You Win! Paper loses to Scissors");
+    result.textContent = "You Win! Paper loses to Scissors";
     return;
   }
 }
