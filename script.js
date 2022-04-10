@@ -1,3 +1,4 @@
+//randomization of computer selection
 function computerPlay() {
   //randomly return rock paper scissors
   const gestures = ["rock", "paper", "scissors"];
@@ -13,31 +14,31 @@ function computerPlay() {
 function computerSelection(){
     
 }*/
-//incerment count for player
+//increment count for player
 function playerScore() {
   let playerCount = document.getElementById("playerCount");
   return playerCount.textContent++;
 }
-
+//increment count for computer
 function computerScore() {
   let computerCount = document.getElementById("computerCount");
   return computerCount.textContent++;
 }
-
+//increment count for tie
 function tieScore() {
   let tieCount = document.getElementById("tieCount");
   return tieCount.textContent++;
 }
-
-function incermentRound() {
+//increment round
+function incrementRound() {
   let round = document.getElementById("roundCount");
   return round.textContent++;
 }
-
-function incermentCount() {
+//increment count
+function incrementCount() {
   count++;
 }
-
+//Display if the Player won or lost
 function isEndGame(player, computer) {
   let result = document.getElementById("results-container");
   if (player == 5) {
@@ -56,74 +57,74 @@ function playRound(playerSelection, computerSelection) {
   // return a string that declares the winner of the round
   /*if (playerSelection || computerSelection === null)
     return console.log("No Game");*/
-
+  //Rock Logic
   if (playerSelection == "rock" && computerSelection == "rock") {
     tieScore();
-    result.textContent = "Tie Both Chose Fireball";
+    result.innerText = "Tie\r\nBoth Chose Fireball";
     return;
   }
 
   if (playerSelection == "rock" && computerSelection == "paper") {
     computerScore();
-    incermentRound();
+    incrementRound();
     computer++;
-    result.textContent = "You Lose! Shield beats Fireball";
+    result.innerText = "You Lose!\r\nShield beats Fireball";
     return;
   }
 
   if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore();
-    incermentRound();
+    incrementRound();
     player++;
-    result.textContent = "You Win! Sword loses to Fireball";
+    result.innerText = "You Win!\r\nSword loses to Fireball";
     return;
   }
-
+  //Paper Logic
   if (playerSelection == "paper" && computerSelection == "paper") {
     tieScore();
-    result.textContent = "Tie Both Chose Shield";
+    result.innerText = "Tie\r\nBoth Chose Shield";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "scissors") {
     computerScore();
-    incermentRound();
+    incrementRound();
     computer++;
-    result.textContent = "You Lose! Sword beats Shield";
+    result.innerText = "You Lose!\r\nSword beats Shield";
     return;
   }
 
   if (playerSelection == "paper" && computerSelection == "rock") {
     playerScore();
-    incermentRound();
+    incrementRound();
     player++;
-    result.textContent = "You Win! Fireball loses to Shield";
+    result.innerText = "You Win!\r\nFireball loses to Shield";
     return;
   }
-
+  //Scissor Logic
   if (playerSelection == "scissors" && computerSelection == "scissors") {
     tieScore();
-    result.textContent = "Tie Both Chose Sword";
+    result.innerText = "Tie\r\nBoth Chose Sword";
     return;
   }
 
   if (playerSelection == "scissors" && computerSelection == "rock") {
     computerScore();
-    incermentRound();
+    incrementRound();
     computer++;
-    result.textContent = "You Lose! Fireball beats Sword";
+    result.innerText = "You Lose!\r\nFireball beats Sword";
     return;
   }
 
   if (playerSelection == "scissors" && computerSelection == "paper") {
     playerScore();
-    incermentRound();
+    incrementRound();
     player++;
-    result.textContent = "You Win! Shield loses to Sword";
+    result.innerText = "You Win!\r\nShield loses to Sword";
     return;
   }
 }
-
+//disable all buttons from being selected
 function disableButtons() {
   buttons.forEach((elem) => {
     elem.disabled = true;
@@ -183,10 +184,13 @@ playRound(playerSelection, computerSelection);*/
 
 // playerPlay();
 // game();
+
+//setup global variables
 const rounds = 5;
 let player = 0;
 let computer = 0;
 
+//Check when a button is clicked
 const buttons = document.querySelectorAll("button");
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
@@ -197,6 +201,7 @@ buttons.forEach((button) => {
     let computerSelection = computerPlay();
     console.log("Player" + " " + playerSelection + " " + player);
     console.log("CPU" + " " + computerSelection + " " + computer);
+    //call classes each time a button is clicked
     playRound(playerSelection, computerSelection);
     isEndGame(player, computer);
   });
